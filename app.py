@@ -5,13 +5,22 @@ from random import randint, choice
 
 # open file 
 
-readFromFile = open("file name", "r")
-lines = readFromFile.readline
-print(f"Line: {lines} ")
-
-randomPick = randint(0, len(lines) - 1)
+# readFromFile = open("file name", "r")
+# lines = readFromFile.readline
+# print(f"Line: {lines} ")
 
 
-print(randomPick)
+# List of worlds 
+quotes = ("It's just a flesh wound.",
+          "He's not the Messiah. He's a very naughty boy!",
+          "THIS IS AN EX-PARROT!!")
 
-let selectedTweet = lines[randomPick]
+# picked random index from the quotes array/list
+randomPick = randint(0, len(quotes) - 1)
+# test
+print(f"Random Number: {randomPick}")
+
+# assing selected quote to a new variable
+selectedTweet = quotes[randomPick]
+# test 
+print(f"Selected Quote: {selectedTweet}")
