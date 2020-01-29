@@ -10,10 +10,10 @@ def make__sentence(words=1):
    # empty array for amount of word paramenter request
     word_list = []
 
-    # 
+    
     while len(word_list) < words:
         word_list.append(random.choice(lines))
-
+    # join all word in list as a string 
     return(' '.join(word_list))
 
 
