@@ -1,9 +1,18 @@
-from flask import Flask, render_template, request, redirect, url_for
-import os
-
-
+# app.py
+from flask import Flask, request, render_template
 app = Flask(__name__)
-from random import randint, choice
+
+@app.route('/') #index
+def dashBoard():
+
+
+    return render_template("index.html")
+
+
+
+if __name__ == '__main__':
+    # Threaded option to enable multiple instances for multiple user access support
+    app.run(threaded=True, port=5000)
 
 
 # open file 
@@ -30,15 +39,7 @@ from random import randint, choice
 #     # print(f"Selected Quote: {selectedTweet}")
 #     return selectedTweet
 
-@app.route('/') #index
-def dashBoard():
-
-
-    return render_template("index.html")
 
 
 
 
-
-if __name__ == '__main__':
-  app.run(debug=True, host='0.0.0.0', port=os.environ.get('PORT', 5000))
