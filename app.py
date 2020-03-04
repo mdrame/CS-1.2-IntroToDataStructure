@@ -1,25 +1,17 @@
-from flask import Flask, render_template, request, redirect, url_for #Built in methods accessing
-from histogram import histogram_dict, read_file # importing two methods from histogram
+from flask import Flask, render_template, request, redirect, url_for
+from histogram import histogram_dict, read_file
+from markov_chain import higher_order, higher_order_walk, new_chain, create_sentence, order_sample, cleanup_text_file
 import random
-
 
 app = Flask(__name__)
 
-@app.route('/') #index
-def display_phrase():
-  # read_file method open a file, get string and slit them into words.
-  words_list = read_file('testing.txt')
-  # histograme_dict return a dictionary dictionary of words count.
-  histogram = histogram_dict(words_list)
+@app.route('/')
+def show_phrase():
+    words = cleanup_text_file('txt_files/houseofquiet.txt')
+    word_list = words.split()
+    sentence = higher_order_walk(word_list, 40)
 
+    return render_template('index.html', sentence=sentence)
 
-  return render_template('index.html', histogram=histogram) 
-
-
-
-if __name__ == '__main__':
-    # Threaded option to enable multiple instances for multiple user access support
-    app.run(debug=True)
-
-
-
+if __name__ == "__main__":
+    app.run(debug=True, host='0.0.0.0')
